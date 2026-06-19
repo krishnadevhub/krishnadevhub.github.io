@@ -1,42 +1,391 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Professional Portfolio</title>
-    <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 20px; color: #333; }
-        header { background: #24292e; color: #fff; padding: 20px; text-align: center; }
-        section { margin: 20px 0; }
-        .project-card { border: 1px solid #ddd; padding: 15px; border-radius: 5px; margin-bottom: 10px; }
-        a { color: #0366d6; text-decoration: none; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Krishnamoorthy Velautham — Senior Software Engineer, Systems Architecture</title>
+<meta name="description" content="Senior Software Engineer · 18+ years architecting microservices, distributed systems, and AI-native engineering workflows for enterprise & FinTech platforms.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0A0D12;
+    --surface:#10141B;
+    --surface-2:#161B24;
+    --line:#232B38;
+    --line-soft:#1A212C;
+    --text:#E7ECF2;
+    --muted:#8B97A8;
+    --muted-2:#5C6878;
+    --cyan:#5EEAD4;
+    --amber:#F0B429;
+    --amber-dim:#7A5B1E;
+    --radius:2px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--text);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{ background:var(--cyan); color:#0A0D12; }
+
+  .bp-grid{
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      linear-gradient(var(--line-soft) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+    background-size:48px 48px;
+    opacity:0.45;
+    -webkit-mask-image:radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 75%);
+    mask-image:radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 75%);
+  }
+
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 32px; position:relative; z-index:1; }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(10,13,18,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:64px; }
+  .nav-id{ font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--cyan); letter-spacing:0.04em; }
+  .nav-id span{ color:var(--muted-2); }
+  .nav-links{ display:flex; gap:28px; list-style:none; }
+  .nav-links a{
+    color:var(--muted); text-decoration:none; font-size:13px; font-family:'IBM Plex Mono', monospace;
+    letter-spacing:0.03em; transition:color .2s ease; position:relative;
+  }
+  .nav-links a:hover{ color:var(--text); }
+  .nav-links a::before{ content:"// "; color:var(--muted-2); }
+
+  /* ---------- HERO ---------- */
+  header.hero{ position:relative; padding:96px 0 64px; border-bottom:1px solid var(--line); }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--amber);
+    letter-spacing:0.12em; text-transform:uppercase; display:flex; align-items:center; gap:10px; margin-bottom:28px;
+  }
+  .eyebrow::before{ content:""; width:8px; height:8px; background:var(--amber); display:inline-block; box-shadow:0 0 0 3px var(--amber-dim); }
+
+  h1.title{
+    font-family:'Space Grotesk', sans-serif; font-weight:700;
+    font-size:clamp(34px, 5.4vw, 64px); line-height:1.06; letter-spacing:-0.015em;
+    max-width:880px;
+  }
+  h1.title .accent{ color:var(--cyan); }
+  .tagline{ margin-top:22px; max-width:680px; font-size:18px; color:var(--muted); }
+  .tagline strong{ color:var(--text); font-weight:500; }
+
+  .hero-meta{ display:flex; flex-wrap:wrap; gap:10px 28px; margin-top:36px; font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--muted-2); }
+  .hero-meta a{ color:var(--muted-2); text-decoration:none; border-bottom:1px solid var(--line); padding-bottom:1px; transition:color .2s, border-color .2s; }
+  .hero-meta a:hover{ color:var(--cyan); border-color:var(--cyan); }
+
+  .hero-cta{ display:flex; gap:14px; margin-top:40px; flex-wrap:wrap; }
+  .btn{
+    font-family:'IBM Plex Mono', monospace; font-size:13px; padding:13px 22px; border-radius:var(--radius);
+    text-decoration:none; letter-spacing:0.02em; transition:all .2s ease; display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-primary{ background:var(--cyan); color:#0A0D12; font-weight:600; }
+  .btn-primary:hover{ background:#84F2E1; }
+  .btn-ghost{ border:1px solid var(--line); color:var(--text); }
+  .btn-ghost:hover{ border-color:var(--cyan); color:var(--cyan); }
+
+  /* ---------- SCHEMATIC DIAGRAM ---------- */
+  .schematic{ margin-top:64px; border:1px solid var(--line); background:var(--surface); border-radius:var(--radius); overflow:hidden; }
+  .schematic-label{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:12px 18px; border-bottom:1px solid var(--line);
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--muted-2); letter-spacing:0.08em; text-transform:uppercase;
+  }
+  .schematic-label .dot-row span{ display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--line); margin-left:5px; }
+  svg.diagram{ width:100%; height:auto; display:block; }
+  .node-box{ fill:var(--surface-2); stroke:var(--line); stroke-width:1; }
+  .node-box.active{ stroke:var(--cyan); }
+  .node-label{ font-family:'IBM Plex Mono', monospace; font-size:11px; fill:var(--text); }
+  .node-sub{ font-family:'IBM Plex Mono', monospace; font-size:9px; fill:var(--muted-2); }
+  .flow-line{ stroke:var(--line); stroke-width:1.5; fill:none; }
+  .flow-pulse{ stroke:var(--cyan); stroke-width:1.5; fill:none; stroke-dasharray:6 220; animation:flow 4.5s linear infinite; opacity:0.9; }
+  @keyframes flow{ to{ stroke-dashoffset:-440; } }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{ padding:88px 0; border-bottom:1px solid var(--line); position:relative; }
+  section:last-of-type{ border-bottom:none; }
+  .sec-head{ display:flex; align-items:baseline; gap:16px; margin-bottom:48px; }
+  .sec-tag{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--amber); letter-spacing:0.1em; }
+  .sec-title{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:clamp(24px,3vw,32px); }
+  .sec-rule{ flex:1; height:1px; background:var(--line); }
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{ display:grid; grid-template-columns:1.4fr 1fr; gap:56px; }
+  .about-body p{ color:var(--muted); margin-bottom:18px; font-size:16px; max-width:60ch; }
+  .about-body strong{ color:var(--text); font-weight:500; }
+  .stat-stack{ display:flex; flex-direction:column; gap:0; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; }
+  .stat{ padding:22px 22px; border-bottom:1px solid var(--line); background:var(--surface); }
+  .stat:last-child{ border-bottom:none; }
+  .stat-num{ font-family:'Space Grotesk', sans-serif; font-size:30px; font-weight:700; color:var(--cyan); }
+  .stat-desc{ font-size:13px; color:var(--muted); margin-top:4px; }
+
+  /* ---------- STACK ---------- */
+  .stack-grid{ display:grid; grid-template-columns:repeat(4, 1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
+  .stack-cell{ background:var(--surface); padding:24px 22px; }
+  .stack-cell h4{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--amber); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:14px; }
+  .pill-row{ display:flex; flex-wrap:wrap; gap:7px; }
+  .pill{
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--muted);
+    border:1px solid var(--line); padding:5px 10px; border-radius:var(--radius); transition:all .2s ease;
+  }
+  .pill:hover{ color:var(--cyan); border-color:var(--cyan); }
+
+  /* ---------- PROJECTS ---------- */
+  .proj{
+    border:1px solid var(--line); background:var(--surface); margin-bottom:1px; padding:32px;
+    display:grid; grid-template-columns:120px 1fr; gap:32px; transition:border-color .2s ease;
+  }
+  .proj:hover{ border-color:var(--cyan); }
+  .proj-id{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--muted-2); }
+  .proj-id .num{ display:block; font-family:'Space Grotesk', sans-serif; font-size:26px; color:var(--text); margin-top:6px; }
+  .proj h3{ font-family:'Space Grotesk', sans-serif; font-size:19px; font-weight:600; margin-bottom:14px; }
+  .proj-row{ display:grid; grid-template-columns:90px 1fr; gap:14px; margin-bottom:10px; font-size:14.5px; }
+  .proj-row .k{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--muted-2); letter-spacing:0.06em; padding-top:2px; }
+  .proj-row .v{ color:var(--muted); }
+  .proj-row .v strong{ color:var(--cyan); font-weight:600; }
+  .proj-row .v em{ color:var(--muted-2); font-style:normal; border-bottom:1px dashed var(--line); }
+  .proj-stack{ margin-top:16px; display:flex; flex-wrap:wrap; gap:6px; }
+  .proj-stack span{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:var(--muted-2); border:1px solid var(--line-soft); padding:3px 8px; }
+
+  /* ---------- METRICS ---------- */
+  .metrics-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .metric-card{ border:1px solid var(--line); padding:4px; background:var(--surface); }
+  .metric-card img{ width:100%; display:block; border-radius:var(--radius); }
+  .metric-full{ grid-column:1 / -1; }
+  .ghost-note{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--muted-2); margin-top:16px; }
+
+  /* ---------- FOOTER ---------- */
+  footer{ padding:56px 0 80px; text-align:center; }
+  footer .sig{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--muted-2); letter-spacing:0.05em; }
+  footer .sig .cyan{ color:var(--cyan); }
+  .footer-links{ display:flex; justify-content:center; gap:24px; margin-top:18px; }
+  .footer-links a{ color:var(--muted); text-decoration:none; font-size:13px; font-family:'IBM Plex Mono', monospace; transition:color .2s; }
+  .footer-links a:hover{ color:var(--cyan); }
+
+  [data-reveal]{ opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
+  [data-reveal].in{ opacity:1; transform:translateY(0); }
+
+  @media (max-width:860px){
+    .nav-links{ display:none; }
+    .about-grid{ grid-template-columns:1fr; }
+    .stack-grid{ grid-template-columns:repeat(2,1fr); }
+    .proj{ grid-template-columns:1fr; }
+    .proj-id .num{ font-size:20px; }
+    .metrics-grid{ grid-template-columns:1fr; }
+  }
+</style>
 </head>
 <body>
 
-    <header>
-        <h1>Hi, I'm [Your Name] 👋</h1>
-        <p>Software Engineer | Designer | Problem Solver</p>
-    </header>
+<div class="bp-grid"></div>
 
-    <section>
-        <h2>About Me</h2>
-        <p>Write a short, engaging description of your technical skills, experiences, and career goals here.</p>
-    </section>
+<nav>
+  <div class="wrap">
+    <div class="nav-id">KV<span>/sys-architect</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">about</a></li>
+      <li><a href="#stack">stack</a></li>
+      <li><a href="#projects">projects</a></li>
+      <li><a href="#metrics">metrics</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </div>
+</nav>
 
-    <section>
-        <h2>Featured Projects</h2>
-        <div class="project-card">
-            <h3>Project Title 🚀</h3>
-            <p>Briefly describe what your app does, the stack used (e.g., Python, React), and your main contributions.</p>
-            <a href="#" target="_blank">View Live Demo</a> | <a href="#" target="_blank">GitHub Repo</a>
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Senior Software Engineer · Penang, Malaysia</div>
+    <h1 class="title">Architecting <span class="accent">distributed systems</span> that scale from legacy monolith to AI‑orchestrated microservices.</h1>
+    <p class="tagline">18+ years building highly available, security-hardened platforms for enterprise and FinTech — and, more recently, designing the <strong>AI-native engineering workflows</strong> that ship them faster.</p>
+
+    <div class="hero-meta">
+      <a href="mailto:krishna941@gmail.com">krishna941@gmail.com</a>
+      <a href="https://linkedin.com/in/krishnavelautham" target="_blank" rel="noopener">linkedin.com/in/krishnavelautham</a>
+      <a href="https://github.com/krishnadevhub" target="_blank" rel="noopener">github.com/krishnadevhub</a>
+      <a href="https://stackoverflow.com/users/1673290" target="_blank" rel="noopener">stackoverflow/1673290</a>
+    </div>
+
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="#projects">View Project Specs →</a>
+      <a class="btn btn-ghost" href="mailto:krishna941@gmail.com">Get In Touch</a>
+    </div>
+
+    <div class="schematic" data-reveal>
+      <div class="schematic-label">
+        <span>FIG. 01 — CAREER TOPOLOGY (2007 → 2026)</span>
+        <span class="dot-row"><span></span><span></span><span></span></span>
+      </div>
+      <svg class="diagram" viewBox="0 0 1000 220" xmlns="http://www.w3.org/2000/svg">
+        <!-- nodes -->
+        <rect class="node-box" x="40" y="84" width="190" height="56" rx="2"/>
+        <text class="node-label" x="58" y="108">MONOLITH</text>
+        <text class="node-sub" x="58" y="124">PHP · ASP.NET · 2004–2013</text>
+
+        <rect class="node-box" x="320" y="84" width="220" height="56" rx="2"/>
+        <text class="node-label" x="338" y="108">MICROSERVICES</text>
+        <text class="node-sub" x="338" y="124">Symfony · REST/GraphQL · 2013–2023</text>
+
+        <rect class="node-box active" x="630" y="84" width="330" height="56" rx="2"/>
+        <text class="node-label" x="648" y="108" fill="#5EEAD4">AI-ORCHESTRATED SDLC</text>
+        <text class="node-sub" x="648" y="124">Devin · Agentic Refactor · 2023–present</text>
+
+        <!-- connectors -->
+        <path class="flow-line" d="M230 112 H320"/>
+        <path class="flow-pulse" d="M230 112 H320"/>
+        <path class="flow-line" d="M540 112 H630"/>
+        <path class="flow-pulse" d="M540 112 H630" style="animation-delay:1.5s"/>
+
+        <!-- baseline ticks -->
+        <line x1="40" y1="170" x2="960" y2="170" stroke="#1A212C" stroke-width="1"/>
+        <text class="node-sub" x="40" y="190">UK · ENTERPRISE</text>
+        <text class="node-sub" x="320" y="190">MALAYSIA · SAAS / FINTECH</text>
+        <text class="node-sub" x="630" y="190" fill="#7A8696">+30% VELOCITY · 50% CYCLE TIME · 0 BREAKING CHANGES</text>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-tag">01</span><h2 class="sec-title">About</h2><span class="sec-rule"></span></div>
+    <div class="about-grid">
+      <div class="about-body" data-reveal>
+        <p>I architect highly available, security-hardened microservice ecosystems that survive contact with real production traffic — and I build the engineering cultures that keep shipping them fast. Across <strong>enterprise SaaS, FinTech, and employee-benefits platforms</strong>, my focus has consistently been the intersection of system design rigor and delivery velocity: decomposing brittle monoliths into resilient, independently deployable services, and instrumenting API contracts that scale partner onboarding instead of bottlenecking it.</p>
+        <p>In the last few years I've pushed further into <strong>AI-native engineering</strong> — designing custom prompt and context-engineering libraries and autonomous-agent frameworks that have driven measurable, board-reportable outcomes across multiple teams, not just my own backlog.</p>
+        <p>I lead from the architecture diagram <em>and</em> the pull request — owning technical roadmaps and executive conversations while staying hands-on enough to mentor engineers through advanced design patterns and secure coding practice. Several of my mentees have since moved into senior roles themselves.</p>
+      </div>
+      <div class="stat-stack" data-reveal>
+        <div class="stat"><div class="stat-num">18+ yrs</div><div class="stat-desc">enterprise, SaaS & FinTech delivery</div></div>
+        <div class="stat"><div class="stat-num">+30%</div><div class="stat-desc">sprint velocity from AI context-engineering library</div></div>
+        <div class="stat"><div class="stat-num">50%</div><div class="stat-desc">faster frontend cycles via AI-orchestrated micro-frontends</div></div>
+        <div class="stat"><div class="stat-num">600+</div><div class="stat-desc">files refactored, zero breaking changes</div></div>
+        <div class="stat"><div class="stat-num">5+</div><div class="stat-desc">enterprise partners on a multi-tenant API platform</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-tag">02</span><h2 class="sec-title">Architectural Stack</h2><span class="sec-rule"></span></div>
+    <div class="stack-grid" data-reveal>
+      <div class="stack-cell">
+        <h4>Languages</h4>
+        <div class="pill-row">
+          <span class="pill">PHP</span><span class="pill">TypeScript</span><span class="pill">JavaScript</span>
+          <span class="pill">Java</span><span class="pill">Dart</span><span class="pill">SQL</span><span class="pill">VB.NET</span><span class="pill">YAML</span>
         </div>
-    </section>
+      </div>
+      <div class="stack-cell">
+        <h4>Frameworks</h4>
+        <div class="pill-row">
+          <span class="pill">Symfony</span><span class="pill">API Platform</span><span class="pill">React</span>
+          <span class="pill">Node.js</span><span class="pill">Flutter</span><span class="pill">Java EE</span><span class="pill">ASP.NET</span>
+        </div>
+      </div>
+      <div class="stack-cell">
+        <h4>Cloud &amp; DevOps</h4>
+        <div class="pill-row">
+          <span class="pill">AWS Lambda</span><span class="pill">SQS</span><span class="pill">RDS/Aurora</span>
+          <span class="pill">Docker</span><span class="pill">Jenkins</span><span class="pill">Azure DevOps</span><span class="pill">Bitbucket</span>
+        </div>
+      </div>
+      <div class="stack-cell">
+        <h4>Data &amp; Integration</h4>
+        <div class="pill-row">
+          <span class="pill">MySQL</span><span class="pill">MS SQL Server</span><span class="pill">MongoDB</span>
+          <span class="pill">Redis</span><span class="pill">GraphQL</span><span class="pill">REST</span><span class="pill">SOAP</span><span class="pill">Stripe</span><span class="pill">Twilio</span>
+        </div>
+      </div>
+    </div>
+    <div class="ghost-note" style="margin-top:18px;">AI tooling — Devin AI · GitHub Copilot · Claude &nbsp;|&nbsp; Certifying — AWS Solutions Architect (Assoc.), expected Jul 2026</div>
+  </div>
+</section>
 
-    <section>
-        <h2>Contact Me</h2>
-        <p>Let's collaborate! Reach out via <a href="mailto:your.email@example.com">Email</a> or connect on <a href="#" target="_blank">LinkedIn</a>.</p>
-    </section>
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-tag">03</span><h2 class="sec-title">Project Specs</h2><span class="sec-rule"></span></div>
+
+    <div class="proj" data-reveal>
+      <div class="proj-id">SYS<span class="num">01</span></div>
+      <div>
+        <h3>AI-Orchestrated Micro-Frontend for Real-Time Financial Calculators</h3>
+        <div class="proj-row"><div class="k">PROBLEM</div><div class="v">A monolithic frontend coupled teams together and inflated release cycles for client-facing financial tooling.</div></div>
+        <div class="proj-row"><div class="k">ACTION</div><div class="v">Architected an AI-assisted micro-frontend using React, TypeScript, Vite & Tailwind, with a state-driven auth layer, using Devin AI–driven context engineering to accelerate delivery.</div></div>
+        <div class="proj-row"><div class="k">RESULT</div><div class="v"><strong>50% reduction</strong> in dev cycle time · <em>[# modules shipped]</em> · <em>[TTI improvement %]</em></div></div>
+        <div class="proj-stack"><span>React</span><span>TypeScript</span><span>Vite</span><span>Tailwind</span><span>Devin AI</span></div>
+      </div>
+    </div>
+
+    <div class="proj" data-reveal>
+      <div class="proj-id">SYS<span class="num">02</span></div>
+      <div>
+        <h3>Zero-Downtime Legacy-to-Microservices Modernization</h3>
+        <div class="proj-row"><div class="k">PROBLEM</div><div class="v">A highly coupled, multi-year PHP codebase carried critical technical debt and high regression risk.</div></div>
+        <div class="proj-row"><div class="k">ACTION</div><div class="v">Built an automated governance framework with autonomous agents to refactor 600+ files and standardize error handling, using a micro-kernel strategy to inject Symfony services incrementally.</div></div>
+        <div class="proj-row"><div class="k">RESULT</div><div class="v"><strong>Zero breaking changes</strong> · refactor cycles cut <strong>from days to minutes</strong> · <em>[SonarQube debt reduction %]</em></div></div>
+        <div class="proj-stack"><span>PHP</span><span>Symfony</span><span>Docker</span><span>SonarQube</span><span>Autonomous Agents</span></div>
+      </div>
+    </div>
+
+    <div class="proj" data-reveal>
+      <div class="proj-id">SYS<span class="num">03</span></div>
+      <div>
+        <h3>Multi-Tenant Employee Benefits API Platform</h3>
+        <div class="proj-row"><div class="k">PROBLEM</div><div class="v">Scaling benefit-scheme management across 5+ enterprise partners demanded a secure, well-governed API surface.</div></div>
+        <div class="proj-row"><div class="k">ACTION</div><div class="v">Delivered REST + GraphQL microservices with Symfony Guard auth, Twilio 2FA & hardened Stripe webhooks, backed by an OpenAPI/Swagger contract library.</div></div>
+        <div class="proj-row"><div class="k">RESULT</div><div class="v"><strong>100% elimination</strong> of manual reconciliation · <strong>~30% faster</strong> partner onboarding · <em>[uptime / SLA %]</em></div></div>
+        <div class="proj-stack"><span>PHP</span><span>Symfony</span><span>GraphQL</span><span>Stripe</span><span>Twilio</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="metrics">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-tag">04</span><h2 class="sec-title">Live Engineering Metrics</h2><span class="sec-rule"></span></div>
+    <div class="metrics-grid" data-reveal>
+      <div class="metric-card"><img src="https://github-readme-stats.vercel.app/api?username=krishnadevhub&show_icons=true&theme=tokyonight&hide_border=true&bg_color=10141B&title_color=5EEAD4&text_color=8B97A8&icon_color=F0B429&count_private=true" alt="GitHub stats for krishnadevhub"></div>
+      <div class="metric-card"><img src="https://github-readme-stats.vercel.app/api/top-langs/?username=krishnadevhub&layout=compact&theme=tokyonight&hide_border=true&bg_color=10141B&title_color=5EEAD4&text_color=8B97A8" alt="Top languages for krishnadevhub"></div>
+      <div class="metric-card metric-full"><img src="https://github-readme-streak-stats.herokuapp.com/?user=krishnadevhub&theme=tokyonight&hide_border=true&background=10141B&ring=5EEAD4&fire=F0B429&currStreakLabel=5EEAD4" alt="GitHub streak for krishnadevhub"></div>
+      <div class="metric-card metric-full"><img src="https://github-readme-activity-graph.vercel.app/graph?username=krishnadevhub&theme=tokyo-night&hide_border=true&bg_color=10141B&color=5EEAD4&line=5EEAD4&point=F0B429" alt="Contribution activity graph for krishnadevhub"></div>
+    </div>
+    <div class="ghost-note">Cards render live from GitHub once <code>krishnadevhub</code> has public, active repositories — pin your strongest 3–6 to back the project specs above.</div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="sig">[ STATUS: <span class="cyan">OPEN TO SENIOR / STAFF ROLES</span> ]</div>
+    <div class="footer-links">
+      <a href="mailto:krishna941@gmail.com">Email</a>
+      <a href="https://linkedin.com/in/krishnavelautham" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/krishnadevhub" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://stackoverflow.com/users/1673290" target="_blank" rel="noopener">Stack Overflow</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const items = document.querySelectorAll('[data-reveal]');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  items.forEach(i => io.observe(i));
+</script>
 
 </body>
 </html>
