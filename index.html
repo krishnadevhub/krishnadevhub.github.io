@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Krishnamoorthy Velautham — Senior Software Engineer, Systems Architecture</title>
-<meta name="description" content="Senior Software Engineer · 18+ years architecting microservices, distributed systems, and AI-native engineering workflows for enterprise & FinTech platforms.">
+<meta name="description" content="Senior Software Engineer · 18+ years architecting microservices, distributed systems, and AI-native engineering workflows for enterprise & financial platforms.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -160,11 +160,6 @@
   .proj-stack{ margin-top:16px; display:flex; flex-wrap:wrap; gap:6px; }
   .proj-stack span{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:var(--muted-2); border:1px solid var(--line-soft); padding:3px 8px; }
 
-  /* ---------- METRICS ---------- */
-  .metrics-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-  .metric-card{ border:1px solid var(--line); padding:4px; background:var(--surface); }
-  .metric-card img{ width:100%; display:block; border-radius:var(--radius); }
-  .metric-full{ grid-column:1 / -1; }
   .ghost-note{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--muted-2); margin-top:16px; }
 
   /* ---------- FOOTER ---------- */
@@ -184,7 +179,6 @@
     .stack-grid{ grid-template-columns:repeat(2,1fr); }
     .proj{ grid-template-columns:1fr; }
     .proj-id .num{ font-size:20px; }
-    .metrics-grid{ grid-template-columns:1fr; }
   }
 </style>
 </head>
@@ -199,7 +193,6 @@
       <li><a href="#about">about</a></li>
       <li><a href="#stack">stack</a></li>
       <li><a href="#projects">projects</a></li>
-      <li><a href="#metrics">metrics</a></li>
       <li><a href="#contact">contact</a></li>
     </ul>
   </div>
@@ -209,7 +202,7 @@
   <div class="wrap">
     <div class="eyebrow">Senior Software Engineer · Penang, Malaysia</div>
     <h1 class="title">Architecting <span class="accent">distributed systems</span> that scale from legacy monolith to AI‑orchestrated microservices.</h1>
-    <p class="tagline">18+ years building highly available, security-hardened platforms for enterprise and FinTech — and, more recently, designing the <strong>AI-native engineering workflows</strong> that ship them faster.</p>
+    <p class="tagline">18+ years building highly available, security-hardened platforms for enterprise and financial — and, more recently, designing the <strong>AI-native engineering workflows</strong> that ship them faster.</p>
 
     <div class="hero-meta">
       <a href="mailto:krishna941@gmail.com">krishna941@gmail.com</a>
@@ -247,12 +240,6 @@
         <path class="flow-pulse" d="M230 112 H320"/>
         <path class="flow-line" d="M540 112 H630"/>
         <path class="flow-pulse" d="M540 112 H630" style="animation-delay:1.5s"/>
-
-        <!-- baseline ticks -->
-        <line x1="40" y1="170" x2="960" y2="170" stroke="#1A212C" stroke-width="1"/>
-        <text class="node-sub" x="40" y="190">UK · ENTERPRISE</text>
-        <text class="node-sub" x="320" y="190">MALAYSIA · SAAS / FINTECH</text>
-        <text class="node-sub" x="630" y="190" fill="#7A8696">+30% VELOCITY · 50% CYCLE TIME · 0 BREAKING CHANGES</text>
       </svg>
     </div>
   </div>
@@ -263,12 +250,12 @@
     <div class="sec-head"><span class="sec-tag">01</span><h2 class="sec-title">About</h2><span class="sec-rule"></span></div>
     <div class="about-grid">
       <div class="about-body" data-reveal>
-        <p>I architect highly available, security-hardened microservice ecosystems that survive contact with real production traffic — and I build the engineering cultures that keep shipping them fast. Across <strong>enterprise SaaS, FinTech, and employee-benefits platforms</strong>, my focus has consistently been the intersection of system design rigor and delivery velocity: decomposing brittle monoliths into resilient, independently deployable services, and instrumenting API contracts that scale partner onboarding instead of bottlenecking it.</p>
+        <p>I architect highly available, security-hardened microservice ecosystems that survive contact with real production traffic — and I build the engineering cultures that keep shipping them fast. Across <strong>enterprise SaaS, financial, and employee-benefits platforms</strong>, my focus has consistently been the intersection of system design rigor and delivery velocity: decomposing brittle monoliths into resilient, independently deployable services, and instrumenting API contracts that scale partner onboarding instead of bottlenecking it.</p>
         <p>In the last few years I've pushed further into <strong>AI-native engineering</strong> — designing custom prompt and context-engineering libraries and autonomous-agent frameworks that have driven measurable, board-reportable outcomes across multiple teams, not just my own backlog.</p>
         <p>I lead from the architecture diagram <em>and</em> the pull request — owning technical roadmaps and executive conversations while staying hands-on enough to mentor engineers through advanced design patterns and secure coding practice. Several of my mentees have since moved into senior roles themselves.</p>
       </div>
       <div class="stat-stack" data-reveal>
-        <div class="stat"><div class="stat-num">18+ yrs</div><div class="stat-desc">enterprise, SaaS & FinTech delivery</div></div>
+        <div class="stat"><div class="stat-num">18+ yrs</div><div class="stat-desc">enterprise, SaaS & financial delivery</div></div>
         <div class="stat"><div class="stat-num">+30%</div><div class="stat-desc">sprint velocity from AI context-engineering library</div></div>
         <div class="stat"><div class="stat-num">50%</div><div class="stat-desc">faster frontend cycles via AI-orchestrated micro-frontends</div></div>
         <div class="stat"><div class="stat-num">600+</div><div class="stat-desc">files refactored, zero breaking changes</div></div>
@@ -325,7 +312,7 @@
         <h3>AI-Orchestrated Micro-Frontend for Real-Time Financial Calculators</h3>
         <div class="proj-row"><div class="k">PROBLEM</div><div class="v">A monolithic frontend coupled teams together and inflated release cycles for client-facing financial tooling.</div></div>
         <div class="proj-row"><div class="k">ACTION</div><div class="v">Architected an AI-assisted micro-frontend using React, TypeScript, Vite & Tailwind, with a state-driven auth layer, using Devin AI–driven context engineering to accelerate delivery.</div></div>
-        <div class="proj-row"><div class="k">RESULT</div><div class="v"><strong>50% reduction</strong> in dev cycle time · <em>[# modules shipped]</em> · <em>[TTI improvement %]</em></div></div>
+        <div class="proj-row"><div class="k">RESULT</div><div class="v"><strong>50% reduction</strong> in dev cycle time </div></div>
         <div class="proj-stack"><span>React</span><span>TypeScript</span><span>Vite</span><span>Tailwind</span><span>Devin AI</span></div>
       </div>
     </div>
@@ -336,7 +323,7 @@
         <h3>Zero-Downtime Legacy-to-Microservices Modernization</h3>
         <div class="proj-row"><div class="k">PROBLEM</div><div class="v">A highly coupled, multi-year PHP codebase carried critical technical debt and high regression risk.</div></div>
         <div class="proj-row"><div class="k">ACTION</div><div class="v">Built an automated governance framework with autonomous agents to refactor 600+ files and standardize error handling, using a micro-kernel strategy to inject Symfony services incrementally.</div></div>
-        <div class="proj-row"><div class="k">RESULT</div><div class="v"><strong>Zero breaking changes</strong> · refactor cycles cut <strong>from days to minutes</strong> · <em>[SonarQube debt reduction %]</em></div></div>
+        <div class="proj-row"><div class="k">RESULT</div><div class="v"><strong>Zero breaking changes</strong> · refactor cycles cut <strong>from days to minutes</strong>	</div></div>
         <div class="proj-stack"><span>PHP</span><span>Symfony</span><span>Docker</span><span>SonarQube</span><span>Autonomous Agents</span></div>
       </div>
     </div>
@@ -347,23 +334,10 @@
         <h3>Multi-Tenant Employee Benefits API Platform</h3>
         <div class="proj-row"><div class="k">PROBLEM</div><div class="v">Scaling benefit-scheme management across 5+ enterprise partners demanded a secure, well-governed API surface.</div></div>
         <div class="proj-row"><div class="k">ACTION</div><div class="v">Delivered REST + GraphQL microservices with Symfony Guard auth, Twilio 2FA & hardened Stripe webhooks, backed by an OpenAPI/Swagger contract library.</div></div>
-        <div class="proj-row"><div class="k">RESULT</div><div class="v"><strong>100% elimination</strong> of manual reconciliation · <strong>~30% faster</strong> partner onboarding · <em>[uptime / SLA %]</em></div></div>
+        <div class="proj-row"><div class="k">RESULT</div><div class="v"><strong>100% elimination</strong> of manual reconciliation · <strong>~30% faster</strong> partner onboarding</div></div>
         <div class="proj-stack"><span>PHP</span><span>Symfony</span><span>GraphQL</span><span>Stripe</span><span>Twilio</span></div>
       </div>
     </div>
-  </div>
-</section>
-
-<section id="metrics">
-  <div class="wrap">
-    <div class="sec-head"><span class="sec-tag">04</span><h2 class="sec-title">Live Engineering Metrics</h2><span class="sec-rule"></span></div>
-    <div class="metrics-grid" data-reveal>
-      <div class="metric-card"><img src="https://github-readme-stats.vercel.app/api?username=krishnadevhub&show_icons=true&theme=tokyonight&hide_border=true&bg_color=10141B&title_color=5EEAD4&text_color=8B97A8&icon_color=F0B429&count_private=true" alt="GitHub stats for krishnadevhub"></div>
-      <div class="metric-card"><img src="https://github-readme-stats.vercel.app/api/top-langs/?username=krishnadevhub&layout=compact&theme=tokyonight&hide_border=true&bg_color=10141B&title_color=5EEAD4&text_color=8B97A8" alt="Top languages for krishnadevhub"></div>
-      <div class="metric-card metric-full"><img src="https://github-readme-streak-stats.herokuapp.com/?user=krishnadevhub&theme=tokyonight&hide_border=true&background=10141B&ring=5EEAD4&fire=F0B429&currStreakLabel=5EEAD4" alt="GitHub streak for krishnadevhub"></div>
-      <div class="metric-card metric-full"><img src="https://github-readme-activity-graph.vercel.app/graph?username=krishnadevhub&theme=tokyo-night&hide_border=true&bg_color=10141B&color=5EEAD4&line=5EEAD4&point=F0B429" alt="Contribution activity graph for krishnadevhub"></div>
-    </div>
-    <div class="ghost-note">Cards render live from GitHub once <code>krishnadevhub</code> has public, active repositories — pin your strongest 3–6 to back the project specs above.</div>
   </div>
 </section>
 
